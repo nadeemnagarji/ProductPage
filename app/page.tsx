@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function Home() {
   const [search, setSearch] = useState<string>("");
   //// const [category, setCategory] = useState<string>("");
-  console.log(search);
+  //console.log(search);
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-10  ">
