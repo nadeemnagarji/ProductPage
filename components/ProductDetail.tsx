@@ -28,9 +28,6 @@ export default function ProductDetail({
     return words.slice(0, maxWords).join(" ") + "...";
   };
   const Desc = shortDesc(description, 20);
-  console.log(Desc);
-
-  console.log(description?.slice(0, 10));
 
   return (
     <div className="m-4 mx-auto max-w-screen-lg rounded-md border border-gray-100 text-gray-600 shadow-md">

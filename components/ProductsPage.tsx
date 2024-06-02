@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { SkeletonCard } from "./SkeletonCard";
 
@@ -14,19 +14,17 @@ export type productProps = {
 
 type inputProp = {
   input: string;
+  category: string | null;
 };
 
-export default function ProductsPage({ input }: inputProp) {
+export default function ProductsPage({ input, category }: inputProp) {
   const [products, setProducts] = useState<productProps[]>([]);
-  console.log(products);
-  const filteredProducts = useCallback(() => {
-    return products.filter((item) =>
-      item.title.toLowerCase().includes(input.toLowerCase())
-    );
-  }, [input]);
 
-  const displayProducts = input !== "" ? filteredProducts() : products;
-  console.log(displayProducts);
+  const filteredProducts = !category
+    ? products.filter((item) =>
+        item.title.toLowerCase().includes(input.toLowerCase())
+      )
+    : products.filter((item) => item.category.includes(category));
 
   const fetchProducts = async () => {
     const res = await axios.get("https://fakestoreapi.com/products");
@@ -55,9 +53,9 @@ export default function ProductsPage({ input }: inputProp) {
           <SkeletonCard />
         </div>
       )}
-      {products &&
-        products.length > 0 &&
-        displayProducts.map((item) => <ProductCard key={item.id} {...item} />)}
+      {filteredProducts &&
+        filteredProducts.length > 0 &&
+        filteredProducts.map((item) => <ProductCard key={item.id} {...item} />)}
     </div>
   );
 }

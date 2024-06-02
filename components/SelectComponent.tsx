@@ -3,20 +3,21 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 
-export function SelectComp() {
+interface SelectCompProps {
+  setCategory: (category: string) => void;
+}
+export function SelectComp({ setCategory }: SelectCompProps) {
   return (
-    <Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
+    <Select onValueChange={(value) => setCategory(value)}>
+      <SelectTrigger className="sm:w-[180px] w-full">
+        <SelectValue placeholder="Select Category" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
           <SelectItem value="men's clothing">men's clothing</SelectItem>
           <SelectItem value="jewelery">jewelery</SelectItem>
           <SelectItem value="electronic">electronic</SelectItem>
