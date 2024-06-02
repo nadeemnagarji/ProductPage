@@ -1,13 +1,13 @@
 "use client";
 import ProductsPage from "@/components/ProductsPage";
-import { SelectComp } from "@/components/SelectComponent";
+//import { SelectComp } from "@/components/SelectComponent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 export default function Home() {
   const [search, setSearch] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  //// const [category, setCategory] = useState<string>("");
   console.log(search);
 
   return (
