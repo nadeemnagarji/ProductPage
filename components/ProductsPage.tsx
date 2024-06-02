@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import { SkeletonCard } from "./SkeletonCard";
 
 export type productProps = {
   id: number;
@@ -24,7 +25,7 @@ export default function ProductsPage({ input }: inputProp) {
     );
   }, [input]);
 
-  const displayProducts = filteredProducts();
+  const displayProducts = input !== "" ? filteredProducts() : products;
   console.log(displayProducts);
 
   const fetchProducts = async () => {
@@ -36,12 +37,27 @@ export default function ProductsPage({ input }: inputProp) {
     fetchProducts();
   }, []);
   return (
-    <div className="w-full flex flex-wrap gap-4 items-center justify-center">
+    <div className="w-full h-full  flex flex-wrap gap-4 items-center justify-center">
+      {!products.length && (
+        <div className="flex flex-wrap items-center justify-center gap-10">
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+      )}
       {products &&
-        products.length &&
-        displayProducts.map((item) => {
-          return <ProductCard key={item.id} {...item} />;
-        })}
+        products.length > 0 &&
+        displayProducts.map((item) => <ProductCard key={item.id} {...item} />)}
     </div>
   );
 }

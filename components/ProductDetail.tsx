@@ -1,3 +1,5 @@
+import { Button } from "./ui/button";
+
 export type productProps = {
   id: number;
   title: string;
@@ -58,7 +60,10 @@ export default function ProductDetail({
             <span className="ml-2 text-xs uppercase">{category}</span>
           </div>
           <div className="mt-8 flex flex-col sm:flex-row">
-            <button className="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-emerald-400 py-2 sm:px-8 px-2 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500">
+            <Button
+              variant={"outline"}
+              className="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-emerald-400 py-2 sm:px-8 px-2 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="mr-2 h-4 w-4"
@@ -74,7 +79,7 @@ export default function ProductDetail({
                 />
               </svg>
               Buy now
-            </button>
+            </Button>
           </div>
         </div>
       </div>

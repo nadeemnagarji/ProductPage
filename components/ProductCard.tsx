@@ -10,7 +10,6 @@ export type productProps = {
 };
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "postcss";
 import ProductDetail from "./ProductDetail";
 export default function ProductCard({
   id,
